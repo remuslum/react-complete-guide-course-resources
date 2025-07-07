@@ -32,7 +32,8 @@ function App() {
   }
 
   return (
-    <>
+    // Fragment wrapper component - React does not allow you to return multiple child elements
+    <> 
       <Header />
       <main>
         <section id="core-concepts">

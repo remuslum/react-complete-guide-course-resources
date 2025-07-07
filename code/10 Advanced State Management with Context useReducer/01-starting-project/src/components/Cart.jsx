@@ -1,4 +1,12 @@
-export default function Cart({ items, onUpdateItemQuantity }) {
+import { useContext } from "react";
+// use or useContext is used in similar ways
+// use hook is more flexible - can be used inside if blocks and for loops
+
+import { CartContext } from "../store/shopping-cart-context";
+
+export default function Cart() {
+  const {items, updateItemQuantity} = useContext(CartContext)
+
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -20,11 +28,11 @@ export default function Cart({ items, onUpdateItemQuantity }) {
                   <span> ({formattedPrice})</span>
                 </div>
                 <div className="cart-item-actions">
-                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                  <button onClick={() => updateItemQuantity(item.id, -1)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                  <button onClick={() => updateItemQuantity(item.id, 1)}>
                     +
                   </button>
                 </div>
